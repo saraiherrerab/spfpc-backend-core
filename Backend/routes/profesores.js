@@ -52,7 +52,7 @@ router.post('/profesores', async function(req, res, next) {
       formacion
     } = req.body
 
-    const createUsuario = new PQ({text :`INSERT INTO Usuario (nombre, apellido, usuario,clave_acceso,formacion) VALUES ($1,$2,$3,$4) RETURNING *`, values: [nombre,apellido,usuario,clave_acceso]});
+    const createUsuario = new PQ({text :`INSERT INTO Usuario (nombre, apellido, usuario,clave_acceso) VALUES ($1,$2,$3,$4) RETURNING *`, values: [nombre,apellido,usuario,clave_acceso]});
     
     const resultadoCreacionUsuario = await db.one(createUsuario);
     if (telefono != undefined && telefono != null && telefono !=''){
@@ -79,7 +79,7 @@ router.post('/profesores', async function(req, res, next) {
    
     console.log(resultadoCreacionUsuario)
 
-    const findProfesor =  new PQ({text :`INSERT INTO Profesor (id_profesor)  VALUES ($1) RETURNING *`, values: [resultadoCreacionUsuario.id_usuario]});
+    const findProfesor =  new PQ({text :`INSERT INTO Profesor (id_profesor,formacion)  VALUES ($1) RETURNING *`, values: [resultadoCreacionUsuario.id_usuario,formacion]});
     const result = await db.one(findProfesor);
     
     if (curriculum != undefined && curriculum != null && curriculum !=''){
