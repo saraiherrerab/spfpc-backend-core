@@ -43,7 +43,7 @@ router.post('/enviar-correo', (req, res) => {
     });
 });
 
-router.post('/usuario/correo/:correo', async (req, res) => {
+router.get('/usuario/correo/:correo', async (req, res) => {
 
     try {
         const { correo } = req.params
