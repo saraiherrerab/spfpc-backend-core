@@ -131,4 +131,5 @@ router.get('/cursos/profesor/:id', async function(req, res, next) {
       res.json({menssage: "Error al eliminar estudiante"})
     }
 });
+
 module.exports = router;

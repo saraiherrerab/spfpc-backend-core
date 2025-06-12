@@ -14,6 +14,7 @@ var evaluacionRoutes = require('./routes/evaluacion');
 var cursosRoutes = require('./routes/cursos');
 var horariosRoutes = require('./routes/horarios');
 var nivelesRoutes = require('./routes/nivel');
+var correoRoutes = require('./routes/correo');
 const cors = require('cors');
 
 var app = express();
@@ -31,6 +32,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use(correoRoutes);
 app.use(usersRouter);
 app.use(profesorRouter);
 app.use(gruposRouter);
